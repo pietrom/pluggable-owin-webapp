@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.IO;
+using System.Web.Http;
 
 namespace HelloPlugin
 {
@@ -18,7 +19,8 @@ namespace HelloPlugin
             return new HelloClientMessage()
             {
                 to = target,
-                message = _service.SayHello(target)
+                message = _service.SayHello(target),
+                resources = this.GetType().Assembly.GetManifestResourceNames()
             };
         }
     }
@@ -27,5 +29,6 @@ namespace HelloPlugin
     {
         public string to { get; set; }
         public string message { get; set; }
+        public string[] resources { get; set; }
     }
 }
