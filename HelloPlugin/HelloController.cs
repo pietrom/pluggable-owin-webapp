@@ -5,13 +5,20 @@ namespace HelloPlugin
     [RoutePrefix("/hello")]
     public class HelloController : ApiController
     {
+        private readonly IHelloService _service;
+
+        public HelloController(IHelloService service)
+        {
+            _service = service;
+        }
+
         [Route()]
         public HelloClientMessage GetEcho(string target)
         {
             return new HelloClientMessage()
             {
                 to = target,
-                message = string.Format("Hello, {0}!", target)
+                message = _service.SayHello(target)
             };
         }
     }
