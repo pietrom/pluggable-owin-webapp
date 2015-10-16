@@ -30,7 +30,7 @@ namespace WebHost
 
         private IEnumerable<string> GetResourcesList()
         {
-            return GetType().Assembly.GetManifestResourceNames();
+            return GetType().Assembly.GetManifestResourceNames().Concat(new HelloPlugin.HelloPlugin().GetResourcesList());
         }
 
         public class ResourcesClientMessage

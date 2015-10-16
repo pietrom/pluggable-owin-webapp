@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HelloController.cs" />
+    <Compile Include="HelloPlugin.cs" />
     <Compile Include="HelloPluginInstaller.cs" />
     <Compile Include="HelloService.cs" />
     <Compile Include="IHelloService.cs" />
