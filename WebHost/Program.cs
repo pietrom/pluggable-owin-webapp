@@ -50,7 +50,7 @@ namespace WebHost
 
             container.Register(
                 Classes.FromAssemblyInDirectory(new AssemblyFilter(AppDomain.CurrentDomain.BaseDirectory))
-                    .Where(t => typeof(ApiController).IsAssignableFrom(t)).LifestyleSingleton());
+                    .Where(t => typeof(ApiController).IsAssignableFrom(t)).LifestyleTransient());
 
             config.DependencyResolver = new WindsorDependencyResolver(container);
 
