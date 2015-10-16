@@ -10,15 +10,13 @@ namespace WebHost
         {
             return new EchoClientMessage()
             {
-                to = target,
-                message = string.Format("Hello, {0}!", target)
+                to = target
             };
         }
 
         public class EchoClientMessage
         {
             public string to { get; set; }
-            public string message { get; set; }
         }
     }
 }
