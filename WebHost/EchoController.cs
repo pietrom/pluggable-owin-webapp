@@ -1,4 +1,9 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Web.Http;
 
 namespace WebHost
 {
@@ -12,6 +17,25 @@ namespace WebHost
             {
                 to = target
             };
+        }
+
+        [Route("resources")]
+        public ResourcesClientMessage GetResources()
+        {
+            return new ResourcesClientMessage()
+            {
+                Resources = GetResourcesList()
+            };
+        }
+
+        private IEnumerable<string> GetResourcesList()
+        {
+            return GetType().Assembly.GetManifestResourceNames();
+        }
+
+        public class ResourcesClientMessage
+        {
+            public IEnumerable<string> Resources;
         }
 
         public class EchoClientMessage
